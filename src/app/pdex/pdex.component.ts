@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Pokemon } from './pokemon.model';
 
 @Component({
   selector: 'app-pdex',
@@ -19,10 +20,11 @@ finalArray= [];
   getPokemon() {
     this.http.get<{}>('https://pokeapi.co/api/v2/pokemon/').subscribe((pokes) => {
       const allPokes = Object.assign(pokes);
-      const pokesArray = Object.entries(allPokes);
-      const apiPokes: any = pokesArray[3];
-      this.finalArray = apiPokes[1];
-      console.log(this.finalArray);
+      const apiPokesArray = Object.entries(allPokes);
+      const pokesArray: any = apiPokesArray[3][1];
+      console.log(pokesArray);
+
+
     });
   }
 
