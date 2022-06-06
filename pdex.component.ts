@@ -10,7 +10,7 @@ import { Pokemon } from './pokemon.model';
 export class PdexComponent implements OnInit {
 finalArray= [];
 
-test = '';
+
 
   constructor(private http: HttpClient) { }
 
