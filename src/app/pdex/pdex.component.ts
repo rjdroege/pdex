@@ -18,14 +18,18 @@ finalArray= [];
   }
 
   getPokemon() {
-    this.http.get<{}>('https://pokeapi.co/api/v2/pokemon/').subscribe((pokes) => {
+    this.http.get<{}>('https://pokeapi.co/api/v2/pokemon').subscribe((pokes) => {
       const allPokes = Object.assign(pokes);
       const apiPokesArray = Object.entries(allPokes);
       const pokesArray: any = apiPokesArray[3][1];
       console.log(pokesArray);
-
-
     });
+  }
+
+  pokeAbility() {
+    this.http.get('https://pokeapi.co/api/v2/ability/1/').subscribe((res) => {
+
+    })
   }
 
 }
