@@ -16,6 +16,7 @@ finalArray= [];
 
   ngOnInit(): void {
     this.getPokemon();
+
   }
 
   getPokemon() {
@@ -23,9 +24,7 @@ finalArray= [];
       const allPokes = Object.assign(pokes);
       const apiPokesArray = Object.entries(allPokes);
       const pokesArray: any = apiPokesArray[3][1];
-      console.log(pokesArray);
-
-
+      this.finalArray = pokesArray
     });
   }
 
