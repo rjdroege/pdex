@@ -22,14 +22,17 @@ finalArray= [];
       const allPokes = Object.assign(pokes);
       const apiPokesArray = Object.entries(allPokes);
       const pokesArray: any = apiPokesArray[3][1];
-      console.log(pokesArray);
+      pokesArray.forEach(poke => {
+        let allPokes = new Pokemon(
+          poke.name,
+          poke.url
+        );
+        this.finalArray.push(allPokes);
+      });
+      console.log(this.finalArray);
     });
   }
 
-  pokeAbility() {
-    this.http.get('https://pokeapi.co/api/v2/ability/1/').subscribe((res) => {
 
-    })
-  }
 
 }

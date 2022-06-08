@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PdexComponent } from './pdex/pdex.component';
+import { SavedPokeComponent } from './saved-poke/saved-poke.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PdexComponent
+    PdexComponent,
+    SavedPokeComponent
   ],
   imports: [
     BrowserModule,
