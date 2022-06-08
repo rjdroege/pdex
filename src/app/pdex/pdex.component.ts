@@ -9,6 +9,7 @@ import { Pokemon } from './pokemon.model';
 })
 export class PdexComponent implements OnInit {
 finalArray= [];
+savedArray= [];
 
 
   constructor(private http: HttpClient) { }
@@ -31,6 +32,11 @@ finalArray= [];
       });
       console.log(this.finalArray);
     });
+  }
+
+  savePokemon(i) {
+    this.savedArray.push(this.finalArray[i]);
+    console.log(this.savedArray);
   }
 
 

@@ -1,5 +1,5 @@
 <div class="row mb-3">
-  <div class="col-md-9" *ngFor="let poke of finalArray">
-      <a style="cursor: pointer;" class="list-group-item clearfix">{{ poke.name }}</a>
+  <div class="col-md-9" *ngFor="let poke of finalArray, let i = index">
+      <a style="cursor: pointer;" class="list-group-item clearfix" (click)="savePokemon(i)">{{ poke.name }}</a>
   </div>
 </div>
