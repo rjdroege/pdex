@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './pokemon.model';
+import { UrlCallingService } from './poke-description/url-calling.service';
 
 @Component({
   selector: 'app-pdex',
@@ -10,9 +11,10 @@ import { Pokemon } from './pokemon.model';
 export class PdexComponent implements OnInit {
 finalArray= [];
 
+@Input() currUrl:string = "";
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient ,private descrptionS: UrlCallingService){ }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -25,7 +27,14 @@ finalArray= [];
       const apiPokesArray = Object.entries(allPokes);
       const pokesArray: any = apiPokesArray[3][1];
       this.finalArray = pokesArray
+      console.log(this.finalArray)
     });
+  }
+  //finds the url for click
+  pokeClickId(url: string){
+    this.currUrl = url
+    this.descrptionS.url = this.currUrl
+
   }
 
 }
