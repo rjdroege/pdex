@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pokemon } from './pokemon.model';
 import { Subject, Subscription } from 'rxjs';
-import { PdexService } from './pdex.service';
+import { Pokemon } from 'src/app/pdex/pokemon.model';
 
 @Component({
   selector: 'app-pdex',
@@ -16,7 +15,7 @@ savedPoke = new Subject();
 sub: Subscription;
 
 
-  constructor(private http: HttpClient, private pdex: PdexService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getPokemon();
