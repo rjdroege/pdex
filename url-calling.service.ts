@@ -7,16 +7,16 @@ import { PdexComponent } from '../pdex.component';
 })
 export class UrlCallingService {
   //holds the url for the click on the left side
-  @Output() url = this.pokeUrl.currUrl
+  url = ""
 
   constructor(private pokeUrl:PdexComponent, private http:HttpClient) { }
 
-  getPokemon() {
-    this.http.get<{}>( this.url ).subscribe((pokes) => {
-      const allPokes = Object.assign(pokes);
-      const apiPokesArray = Object.entries(allPokes);
+  // getPokemon() {
+  //   this.http.get<{}>( this.url ).subscribe((pokes) => {
+  //     const allPokes = Object.assign(pokes);
+  //     const apiPokesArray = Object.entries(allPokes);
 
-      return apiPokesArray;
-    });
-  }
+  //     return apiPokesArray;
+  //   });
+  // }
 }

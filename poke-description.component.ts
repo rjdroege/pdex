@@ -11,7 +11,7 @@ export class PokeDescriptionComponent implements OnInit {
   constructor(private urlService:UrlCallingService) { }
 
   ngOnInit(): void {
-    console.log(this.urlService.getPokemon())
+    // console.log(this.urlService.getPokemon())
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pokemon } from './pokemon.model';
 import { UrlCallingService } from './poke-description/url-calling.service';
 
 @Component({
