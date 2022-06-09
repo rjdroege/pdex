@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './pokemon.model';
+import { Subject, Subscription } from 'rxjs';
+import { PdexService } from './pdex.service';
 
 @Component({
   selector: 'app-pdex',
@@ -10,9 +12,11 @@ import { Pokemon } from './pokemon.model';
 export class PdexComponent implements OnInit {
 finalArray= [];
 savedArray= [];
+savedPoke = new Subject();
+sub: Subscription;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pdex: PdexService) { }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -30,15 +34,12 @@ savedArray= [];
         );
         this.finalArray.push(allPokes);
       });
-      console.log(this.finalArray);
     });
   }
 
-  savePokemon(i) {
+  savePokes(i: number) {
     this.savedArray.push(this.finalArray[i]);
     console.log(this.savedArray);
   }
-
-
 
 }

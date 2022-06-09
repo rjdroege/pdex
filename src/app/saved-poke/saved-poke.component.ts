@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-saved-poke',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./saved-poke.component.css']
 })
 export class SavedPokeComponent implements OnInit {
+  pokeSub: Subscription;
+  myPoke = [];
 
   constructor() { }
 
