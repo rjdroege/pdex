@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  callPokes() {
+    this.http.get('https://pokeapi.co/api/v2/pokemon/bulbasaur/').subscribe((res) => {
+      console.log(res);
+    })
   }
 
 }
