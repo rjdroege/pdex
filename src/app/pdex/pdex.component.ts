@@ -17,7 +17,6 @@ finalArray= [];
 
   ngOnInit(): void {
     this.getPokemon();
-
   }
 
   getPokemon() {
