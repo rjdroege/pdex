@@ -10,9 +10,6 @@ export class PdexComponent implements OnInit {
 finalArray= [];
 savedArray= [];
 
-// @Input() currUrl:string = "";
-
-
   constructor(private http: HttpClient){ }
 
   ngOnInit(): void {
@@ -33,13 +30,9 @@ savedArray= [];
       const thisPoke: string = this.finalArray[idx].name;
       console.log(thisPoke);
       this.http.get<{}>(`https://pokeapi.co/api/v2/pokemon/${thisPoke}`).subscribe((res) => {
-        console.log(res);
+
       })
 
     }
 
-  // pokeClickId(url: string){
-  //   this.currUrl = url
-  //   this.descrptionS.url = this.currUrl
-  // }
 }

@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PdexComponent } from './pdex/pdex.component';
 import { PokeDescriptionComponent } from './pdex/poke-description/poke-description.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PdexComponent,
-    PokeDescriptionComponent
+    PokeDescriptionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
