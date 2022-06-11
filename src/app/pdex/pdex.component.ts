@@ -25,7 +25,6 @@ descObj = []
       const pokesArray: any = apiPokesArray[3][1];
       this.finalArray = pokesArray
       console.log(this.finalArray)
-
     });
   }
   //finds the url for click

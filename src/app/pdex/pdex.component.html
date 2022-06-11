@@ -22,6 +22,12 @@
         {{ poke.name }}
         {{ poke.height }}
         {{ poke.weight }}
+        <button class="btn-btn primary" (click)="savePoke(i)">
+          Save this poke!
+        </button>
+        <button class="btn-btn danger" (click)="deletePoke()">
+          Delete this poke!
+        </button>
       </div>
     </div>
   </div>
