@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UrlCallingService } from './poke-description/url-calling.service';
 
 @Component({
   selector: 'app-pdex',
@@ -9,11 +8,12 @@ import { UrlCallingService } from './poke-description/url-calling.service';
 })
 export class PdexComponent implements OnInit {
 finalArray= [];
+savedArray= [];
 
-@Input() currUrl:string = "";
+// @Input() currUrl:string = "";
 
 
-  constructor(private http: HttpClient ,private descrptionS: UrlCallingService){ }
+  constructor(private http: HttpClient){ }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -29,9 +29,17 @@ finalArray= [];
     });
   }
   //finds the url for click
-  pokeClickId(url: string){
-    this.currUrl = url
-    this.descrptionS.url = this.currUrl
-  }
-//hello
+    pokeClickId(idx: number) {
+      const thisPoke: string = this.finalArray[idx].name;
+      console.log(thisPoke);
+      this.http.get<{}>(`https://pokeapi.co/api/v2/pokemon/${thisPoke}`).subscribe((res) => {
+        console.log(res);
+      })
+
+    }
+
+  // pokeClickId(url: string){
+  //   this.currUrl = url
+  //   this.descrptionS.url = this.currUrl
+  // }
 }

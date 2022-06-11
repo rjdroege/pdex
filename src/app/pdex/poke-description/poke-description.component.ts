@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UrlCallingService } from './url-calling.service';
 
 @Component({
   selector: 'app-poke-description',
@@ -8,10 +7,9 @@ import { UrlCallingService } from './url-calling.service';
 })
 export class PokeDescriptionComponent implements OnInit {
 
-  constructor(private urlService:UrlCallingService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(this.urlService.getPokemon())
   }
 
 }

@@ -5,8 +5,8 @@
         <div class="right-container__screen">
           <div
             class="list-item"
-            *ngFor="let pokes of this.finalArray"
-            (click)="pokeClickId(pokes.url)"
+            *ngFor="let pokes of finalArray, let i = index"
+            (click)="pokeClickId(i)"
           >
             {{ pokes.name }}
           </div>
@@ -18,5 +18,4 @@
       </div>
     </div>
   </div>
-  <script src="pdex.js"></script>
 </body>
