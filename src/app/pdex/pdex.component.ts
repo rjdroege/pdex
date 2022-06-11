@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class PdexComponent implements OnInit {
 finalArray= [];
 savedArray= [];
+userArray= [];
 
   constructor(private http: HttpClient){ }
 
@@ -33,6 +34,14 @@ savedArray= [];
 
       })
 
+    }
+
+    savePoke(idx: number) {
+      this.userArray = this.savedArray[idx];
+    }
+
+    deletePoke(idx: number) {
+      this.userArray = [];
     }
 
 }
