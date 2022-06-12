@@ -13,8 +13,14 @@
         </div>
       </div>
       <div class="right-container__buttons">
-        <div class="left-button">Prev</div>
-        <div class="right-button">Next</div>
+        <button
+          class="left-button"
+          (click)="prevBtn()"
+          [disabled]="prevUrl === null"
+        >
+          Prev
+        </button>
+        <div class="right-button" (click)="nextBtn()">Next</div>
       </div>
     </div>
     <div class="row">
