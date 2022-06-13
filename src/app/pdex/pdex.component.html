@@ -1,40 +1,63 @@
-<body>
-  <div class="pokedex">
-    <div class="right-container">
-      <div class="right-container__black">
-        <div class="right-container__screen">
-          <div
-            class="list-item"
-            *ngFor="let pokes of finalArray; let i = index"
-            (click)="pokeClickId(i)"
-          >
-            {{ pokes.name }}
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="pokedex">
+          <div class="right-container">
+            <div class="right-container__black">
+              <div class="right-container__screen">
+                <div
+                  *ngFor="let pokes of finalArray; let i = index"
+                  class="list-item"
+                  (click)="pokeClickId(i)"
+                >
+                  {{ pokes.name }}
+                </div>
+              </div>
+            </div>
+            <div class="right-container__buttons">
+              <button
+                class="left-button"
+                (click)="prevBtn()"
+                [disabled]="prevUrl === null"
+              >
+                Prev
+              </button>
+              <button
+                class="right-button"
+                (click)="nextBtn()"
+                [disabled]="nextUrl === null"
+              >
+                Next
+              </button>
+              <button (click)="favPokes()">Favorites</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="right-container__buttons">
-        <button
-          class="left-button"
-          (click)="prevBtn()"
-          [disabled]="prevUrl === null"
-        >
-          Prev
-        </button>
-        <div class="right-button" (click)="nextBtn()">Next</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="list-item" *ngFor="let poke of savedArray; let i = index">
-        {{ poke.name }}
-        {{ poke.height }}
-        {{ poke.weight }}
-        <button class="btn-btn primary" (click)="savePoke(i)">
-          Save this poke!
-        </button>
-        <button class="btn-btn danger" (click)="deletePoke()">
-          Delete this poke!
-        </button>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="row">
+            <div>
+              <p>{{ descData.name }}</p>
+              <p>{{ descData.types }}</p>
+              <p>{{ descData.weight }}</p>
+              <p>{{ descData.height }}</p>
+              <p>{{ descData.abilities }}</p>
+              <img src="{{ descData.sprite }}" alt="" />
+              <button class="btn-btn primary" (click)="savePoke()">
+                Save this poke!
+              </button>
+              <button class="btn-btn danger" (click)="deletePoke()">
+                Delete this poke!
+              </button>
+            </div>
+          </div>
+          <div class="col-md-3" *ngFor="let user = userArray">
+            <h1>{{ user }}</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</body>
+</div>
