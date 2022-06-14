@@ -30,7 +30,7 @@
               >
                 Next
               </button>
-              <button (click)="favPokes()">Favorites</button>
+              <button class="right-button" (click)="favPokes()">Favorites</button>
             </div>
           </div>
         </div>
@@ -38,18 +38,18 @@
       <div class="row">
         <div class="col-md-3">
           <div class="row">
-            <div>
-              <p>{{ descData.name }}</p>
-              <p>{{ descData.types }}</p>
-              <p>{{ descData.weight }}</p>
-              <p>{{ descData.height }}</p>
-              <p>{{ descData.abilities }}</p>
+            <div *ngIf="showStats">
+              <p><b>Name:</b> {{ descData.name }}</p>
+              <p><b>Type:</b> {{ descData.types }}</p>
+              <p><b>Weight:</b> {{ descData.weight }}</p>
+              <p><b>Height:</b> {{ descData.height }}</p>
+              <p><b>Abilities</b> {{ descData.abilities }}</p>
               <img src="{{ descData.sprite }}" alt="" />
-              <button class="btn-btn primary" (click)="savePoke()">
-                Save this poke!
+              <button class="right-button" (click)="savePoke()">
+                Save poke
               </button>
-              <button class="btn-btn danger" (click)="deletePoke()">
-                Delete this poke!
+              <button class="right-button" (click)="deletePoke()">
+                Delete poke
               </button>
             </div>
           </div>

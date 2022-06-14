@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+img {
+  height: 250px;
+  width: 250px;
+}
+
 body {
   display: flex;
   font-family: sans-serif;
@@ -16,17 +21,13 @@ body {
   display: flex;
   height: 500px;
   margin: 50px;
-  width: 800px;
+  width: 1000px;
 }
 
 .left-container,
 .right-container {
   border: 3px solid black;
   width: 50%;
-}
-
-.right-container {
-  border-left: none;
 }
 
 .left-container {
@@ -165,60 +166,6 @@ body {
   margin: 10px 25px 0;
 }
 
-.controllers__d-pad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.d-pad__cell {
-  background: black;
-  box-shadow: 0 0 2px 2px rgba(0,0,0, .3);
-  height: 25px;
-  width: 25px;
-}
-
-.d-pad__cell.top {
-  border-left: 1px solid dimgrey;
-  border-radius: 5px 5px 0 0;
-  border-right: 1px solid dimgrey;
-  border-top: 1px solid dimgrey;
-  grid-column: 2 / span 1;
-  grid-row: 1 / span 1;
-}
-
-.d-pad__cell.left {
-  border-bottom: 1px solid dimgrey;
-  border-left: 1px solid dimgrey;
-  border-radius: 5px 0 0 5px;
-  border-top: 1px solid dimgrey;
-  grid-column: 1 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.d-pad__cell.middle {
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.d-pad__cell.right {
-  border-bottom: 1px solid dimgrey;
-  border-radius: 0 5px 5px 0;
-  border-right: 1px solid dimgrey;
-  border-top: 1px solid dimgrey;
-  grid-column: 3 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.d-pad__cell.bottom {
-  border-bottom: 1px solid dimgrey;
-  border-left: 1px solid dimgrey;
-  border-radius: 0 0 5px 5px;
-  border-right: 1px solid dimgrey;
-  grid-column: 2 / span 1;
-  grid-row: 3 / span 1;
-}
-
 .controllers__buttons {
   display: flex;
   justify-content: space-around;
@@ -347,7 +294,7 @@ body {
   height: 30px;
   justify-content: center;
   text-transform: uppercase;
-  width: 100px;
+  width: 125px;
 }
 
 .left-button:hover,

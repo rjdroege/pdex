@@ -20,6 +20,7 @@ descData = {
   "weight":[],
   "sprite":[]
 };
+showStats= false;
 
 url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
@@ -65,7 +66,8 @@ favorites:boolean = false;
         const apiPokesArray = Object.entries(allPokes);
          this.descObj = apiPokesArray
          this.mainDescCall()
-      })
+      });
+      this.showStats = true;
 
     }
 
