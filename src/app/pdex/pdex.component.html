@@ -46,12 +46,9 @@
               <p><b>Abilities</b> {{ descData.abilities }}</p>
               <img src="{{ descData.sprite }}" alt="" />
               <button class="save-button" (click)="savePoke()">
-                Save poke
+                Add to Favorites
               </button>
-              <button class="delete-button" (click)="deletePoke()">
-                Delete poke
-              </button>
-            </div>
+              </div>
           </div>
           <div class="col-md-3" *ngFor="let user = userArray">
             <h1>{{ user }}</h1>
