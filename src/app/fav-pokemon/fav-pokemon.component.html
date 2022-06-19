@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="pokedex">
+        <div class="right-container">
+          <div class="right-container__black">
+            <div class="right-container__screen">
+              <div
+                *ngFor="let pokes of favList; let i = index"
+                class="list-item"
+                (click)="pokeClickId(i)"
+              >
+                {{ pokes }}
+              </div>
+            </div>
+          </div>
+          <button routerLink="/pdex">PokéDex</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="row">
+          <div>
+            <p>{{ descData.name }}</p>
+            <p>{{ descData.types }}</p>
+            <p>{{ descData.weight }}</p>
+            <p>{{ descData.height }}</p>
+            <p>{{ descData.abilities }}</p>
+            <img src="{{ descData.sprite }}" alt="" />
+            <button (click)="onRemove(favList)">XXXXX</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

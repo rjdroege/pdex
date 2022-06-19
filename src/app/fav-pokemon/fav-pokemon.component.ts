@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FavDataService } from '../shared/fav-data.service';
 
-
 @Component({
-  selector: 'app-pdex',
-  templateUrl: './pdex.component.html',
-  styleUrls: ['./pdex.component.css']
+  selector: 'app-fav-pokemon',
+  templateUrl: './fav-pokemon.component.html',
+  styleUrls: ['./fav-pokemon.component.css']
 })
-export class PdexComponent implements OnInit {
+export class FavPokemonComponent implements OnInit {
 
-finalArray= [];
+
 savedArray= [];
 userArray= [];
 descObj = [];
@@ -23,45 +22,25 @@ descData = {
   "sprite":[]
 };
 
-url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
-nextUrl:any = '';
 
-prevUrl:any = '';
-
-favorites:boolean = false;
+favList = new Array
 
   constructor(private http: HttpClient, private favArry:FavDataService){ }
 
   ngOnInit(): void {
-    this.getPokemon();
-   this.favArry.saveInput(null)
+    this.favArry.saveInput(null)
+    this.arryCall()
+
+    console.log(this.favArry.mainArry)
+
   }
 
-  getPokemon() {
-    this.http.get<{}>(this.url).subscribe((pokes) => {      //finds the first 20 pokemon in a url call
-      const allPokes = Object.assign(pokes);
-      const apiPokesArray = Object.entries(allPokes);       //makes the data fetchable by [] calls
-      const pokesArray: any = apiPokesArray[3][1];          //fetches list of first 20 pokemon
-      this.finalArray = pokesArray                          //sets final array equal to first 20 pokemon
-      this.nextUrl = apiPokesArray[1][1]                    //set nextUrl to be the next 20 pokemon in the list
-      this.prevUrl = apiPokesArray[2][1]                    //set prevUrl to be the previous 20 pokemon in the list
-    });
-  }
 
-  nextBtn(){
-    this.url = this.nextUrl   //sets url to next url set in getPokemon()
-    this.getPokemon()        //refreshes getPokemon to update arrays
-  }
-
-  prevBtn(){
-    this.url = this.prevUrl   //sets url to prev url set in getPokemon()
-    this.getPokemon()         //refreshes getPokemon to update arrays
-  }
 
   //finds the url for click
    pokeClickId(idx: number) {
-      const thisPoke: string = this.finalArray[idx].name;
+      const thisPoke: string = this.favList[idx];
        this.http.get<{}>(`https://pokeapi.co/api/v2/pokemon/${thisPoke}`).subscribe((res) => {
         const allPokes = Object.assign(res);
         const apiPokesArray = Object.entries(allPokes);
@@ -71,20 +50,7 @@ favorites:boolean = false;
     }
 
 
-    saveFavPoke() {
-      let pokeName = this.descData.name
-      this.userArray.push(pokeName);
-      this.favArry.saveInput(this.userArray)
-    }
 
-    deleteFavPoke() {
-      this.userArray = [];
-    }
-
-    // saveToFavArry(){
-    //   let idx = this.userArray
-    //   this.favArry.saveInput(idx)
-    // }
 //general call to all description functions for click
     mainDescCall(){
       this.pokeDescSortAbilities()
@@ -180,4 +146,15 @@ favorites:boolean = false;
 
     this.descData[categorie] = value[1]
    }
+
+   onRemove(idx){
+    this.favArry.deleteFavPoke(idx)
+    console.log(idx)
+  }
+
+  arryCall(){
+  let string = this.favArry.mainArry.join()
+  this.favList = string.split(",")
+  console.log(this.favList)
+  }
 }
