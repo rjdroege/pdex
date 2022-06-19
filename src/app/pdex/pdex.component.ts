@@ -22,6 +22,7 @@ descData = {
   "weight":[],
   "sprite":[]
 };
+showStats= false;
 
 url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
@@ -67,7 +68,8 @@ favorites:boolean = false;
         const apiPokesArray = Object.entries(allPokes);
          this.descObj = apiPokesArray
          this.mainDescCall()
-      })
+      });
+      this.showStats = true;
     }
 
 
@@ -80,12 +82,8 @@ favorites:boolean = false;
     deleteFavPoke() {
       this.userArray = [];
     }
-
-    // saveToFavArry(){
-    //   let idx = this.userArray
-    //   this.favArry.saveInput(idx)
-    // }
-//general call to all description functions for click
+  
+    //general call to all description functions for click
     mainDescCall(){
       this.pokeDescSortAbilities()
       this.pokeDescSortTypes()
