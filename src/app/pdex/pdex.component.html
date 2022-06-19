@@ -30,7 +30,11 @@
               >
                 Next
               </button>
+
+              <button routerLink="/poke-favs">Favorites</button>
+            
               <button class="right-button" (click)="favPokes()">Favorites</button>
+
             </div>
           </div>
         </div>
@@ -45,7 +49,7 @@
               <p><b>Height:</b> {{ descData.height }}</p>
               <p><b>Abilities</b> {{ descData.abilities }}</p>
               <img src="{{ descData.sprite }}" alt="" />
-              <button class="save-button" (click)="savePoke()">
+              <button class="save-button" (click)="saveFavPoke()">
                 Add to Favorites
               </button>
               </div>
