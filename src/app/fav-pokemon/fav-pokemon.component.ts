@@ -19,21 +19,19 @@ descData = {
   "name":[],
   "types":[],
   "weight":[],
-  "sprite":[]
+  "sprite":[],
+  "id":""
 };
 
+favList = []
 
-
-favList = new Array
+pokeDescActive = false
 
   constructor(private http: HttpClient, private favArry:FavDataService){ }
 
   ngOnInit(): void {
-    this.favArry.saveInput(null)
+    this.favArry.callStorage()
     this.arryCall()
-
-    console.log(this.favArry.mainArry)
-
   }
 
 
@@ -47,6 +45,7 @@ favList = new Array
          this.descObj = apiPokesArray
          this.mainDescCall()
       })
+      this.pokeDescActive = true
     }
 
 
@@ -59,6 +58,7 @@ favList = new Array
       this.pokeDescSortWNH(4,"height")
       this.pokeDescSortWNH(10,"name")
       this.pokeDescSortWNH(17,"weight")
+      this.pokeDescSortWNH(6,"id")
     }
 
    pokeDescSortAbilities(){     //sort through api data and returns it for abilities
@@ -149,7 +149,10 @@ favList = new Array
 
    onRemove(idx){
     this.favArry.deleteFavPoke(idx)
-    console.log(idx)
+    this.arryCall()
+    let string = this.favArry.mainArry.join()
+    this.favList = string.split(",")
+    this.pokeDescActive = false
   }
 
   arryCall(){
