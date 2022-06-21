@@ -82,7 +82,7 @@ favorites:boolean = false;
     deleteFavPoke() {
       this.userArray = [];
     }
-  
+
     //general call to all description functions for click
     mainDescCall(){
       this.pokeDescSortAbilities()
