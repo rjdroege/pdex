@@ -33,7 +33,7 @@
 
               <button routerLink="/poke-favs">Favorites</button>
 
-              <button class="right-button" (click)="saveFavPoke()">
+              <button class="right-button" (click)="saveFavPoke(descData.name)">
                 Favorites
               </button>
             </div>
@@ -52,7 +52,11 @@
               <p><b>Height:</b> {{ descData.height }}</p>
               <p><b>Abilities</b> {{ descData.abilities }}</p>
               <img src="{{ descData.sprite }}" alt="" />
-              <button class="save-button" (click)="saveFavPoke()">
+              <button
+                class="save-button"
+                (click)="saveFavPoke(descData.name)"
+                *ngIf="isPokeFav"
+              >
                 Add to Favorites
               </button>
             </div>

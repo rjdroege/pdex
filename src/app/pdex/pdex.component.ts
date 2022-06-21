@@ -20,9 +20,12 @@ descData = {
   "name":[],
   "types":[],
   "weight":[],
-  "sprite":[]
+  "sprite":[],
+  "id":""
 };
-showStats= false;
+showStats = false;
+
+isPokeFav = false
 
 url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
 
@@ -35,8 +38,8 @@ favorites:boolean = false;
   constructor(private http: HttpClient, private favArry:FavDataService){ }
 
   ngOnInit(): void {
-    this.getPokemon();
-   this.favArry.saveInput(null)
+  this.getPokemon();
+   this.favArry.callStorage()
   }
 
   getPokemon() {
@@ -70,17 +73,23 @@ favorites:boolean = false;
          this.mainDescCall()
       });
       this.showStats = true;
+      this.favSort()
     }
 
 
-    saveFavPoke() {
-      let pokeName = this.descData.name
-      this.userArray.push(pokeName);
+    saveFavPoke(id) {
+      this.userArray = id;
       this.favArry.saveInput(this.userArray)
+      this.favSort()
+
     }
 
-    deleteFavPoke() {
-      this.userArray = [];
+    favSort(){
+      for (let i = 0;  i < this.favArry.mainArry.length;i++) {
+        if(this.favArry.mainArry[i] == this.descData.name){
+          this.isPokeFav = false
+        }else{this.isPokeFav = true}
+      }
     }
 
     //general call to all description functions for click
@@ -91,6 +100,7 @@ favorites:boolean = false;
       this.pokeDescSortWNH(4,"height")
       this.pokeDescSortWNH(10,"name")
       this.pokeDescSortWNH(17,"weight")
+      this.pokeDescSortWNH(6,"id")
     }
 
    pokeDescSortAbilities(){     //sort through api data and returns it for abilities
