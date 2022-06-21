@@ -32,9 +32,10 @@
               </button>
 
               <button routerLink="/poke-favs">Favorites</button>
-            
-              <button class="right-button" (click)="favPokes()">Favorites</button>
 
+              <button class="right-button" (click)="saveFavPoke()">
+                Favorites
+              </button>
             </div>
           </div>
         </div>
@@ -44,7 +45,9 @@
           <div class="row">
             <div *ngIf="showStats">
               <p><b>Name:</b> {{ descData.name }}</p>
-              <p class="{{ descData.types }}"><b>Type:</b> {{ descData.types }}</p>
+              <p class="{{ descData.types }}">
+                <b>Type:</b> {{ descData.types }}
+              </p>
               <p><b>Weight:</b> {{ descData.weight }}</p>
               <p><b>Height:</b> {{ descData.height }}</p>
               <p><b>Abilities</b> {{ descData.abilities }}</p>
@@ -52,7 +55,7 @@
               <button class="save-button" (click)="saveFavPoke()">
                 Add to Favorites
               </button>
-              </div>
+            </div>
           </div>
           <div class="col-md-3" *ngFor="let user = userArray">
             <h1>{{ user }}</h1>
