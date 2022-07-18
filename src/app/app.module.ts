@@ -8,6 +8,7 @@ import { PdexComponent } from './pdex/pdex.component';
 import { HomeComponent } from './home/home.component';
 import { FavPokemonComponent } from './fav-pokemon/fav-pokemon.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

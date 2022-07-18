@@ -2,36 +2,50 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <div class="pokedex">
-        <div class="right-container">
+        <div class="right-container" style="padding-right: 5%">
           <div class="right-container__black">
             <div class="right-container__screen">
               <div
-                *ngFor="let pokes of favList; let i = index"
+                *ngFor="let pokes of favListSec; let i = index"
                 class="list-item"
-                (click)="pokeClickId(i)"
+                (click)="pokeClickId(pokes)"
               >
                 {{ pokes }}
               </div>
             </div>
           </div>
-          <button routerLink="/pdex">PokéDex</button>
+          <div class="right-container__buttons">
+            <button
+              class="left-button"
+              (click)="prevBtn()"
+              [disabled]="idx1 === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="right-button"
+              (click)="nextBtn()"
+              [disabled]="nextStats === false"
+            >
+              Next
+            </button>
+            <button class="pdex-button" routerLink="/pdex">PokéDex</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="row">
-          <div *ngIf="pokeDescActive">
-            <p>{{ descData.name }}</p>
-            <p>{{ descData.types }}</p>
-            <p>{{ descData.weight }}</p>
-            <p>{{ descData.height }}</p>
-            <p>{{ descData.abilities }}</p>
-            <img src="{{ descData.sprite }}" alt="" />
-            <button (click)="onRemove(descData.name)" class="delete-button">
-              Delete
-            </button>
-          </div>
+    <div *ngIf="pokeDescActive" class="row" style="padding-top: 9%">
+      <div *ngIf="pokeDescActive" class="col-md-12 popup">
+        <div *ngIf="pokeDescActive" class="pokes-desc" style="width: 70%">
+          <p><b>Name:</b> {{ descData.name }}</p>
+          <p class="{{ descData.types }}"><b>Type:</b> {{ descData.types }}</p>
+          <p><b>Weight:</b> {{ descData.weight }}</p>
+          <p><b>Height:</b> {{ descData.height }}</p>
+          <p><b>Abilities</b> {{ descData.abilities }}</p>
+          <img src="{{ descData.sprite }}" alt="" />
+          <button (click)="onRemove(descData.name)" class="delete-button">
+            Delete
+          </button>
         </div>
       </div>
     </div>

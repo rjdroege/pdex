@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FavDataService } from '../shared/fav-data.service';
 
+
 @Component({
   selector: 'app-fav-pokemon',
   templateUrl: './fav-pokemon.component.html',
@@ -23,7 +24,17 @@ descData = {
   "id":""
 };
 
-favList = []
+favList;
+
+favListSec;
+
+idx1 = 0;
+
+idx2 = 20;
+
+prevStats = true;
+
+nextStats = true;
 
 pokeDescActive = false
 
@@ -32,21 +43,22 @@ pokeDescActive = false
   ngOnInit(): void {
     this.favArry.callStorage()
     this.arryCall()
+    this.btnFunc
   }
 
 
 
   //finds the url for click
-   pokeClickId(idx: number) {
-      const thisPoke: string = this.favList[idx];
-       this.http.get<{}>(`https://pokeapi.co/api/v2/pokemon/${thisPoke}`).subscribe((res) => {
+   pokeClickId(idx) {
+      // const thisPoke: string = this.favList[idx];
+       this.http.get<{}>(`https://pokeapi.co/api/v2/pokemon/${idx}`).subscribe((res) => {
         const allPokes = Object.assign(res);
         const apiPokesArray = Object.entries(allPokes);
          this.descObj = apiPokesArray
          this.mainDescCall()
       })
       this.pokeDescActive = true
-    }
+  }
 
 
 
@@ -146,18 +158,37 @@ pokeDescActive = false
 
     this.descData[categorie] = value[1]
    }
-
+   //removes a favorite
    onRemove(idx){
     this.favArry.deleteFavPoke(idx)
-    this.arryCall()
-    let string = this.favArry.mainArry.join()
-    this.favList = string.split(",")
     this.pokeDescActive = false
   }
-
-  arryCall(){
-  let string = this.favArry.mainArry.join()
-  this.favList = string.split(",")
-  console.log(this.favList)
+//next 20 of saved pokes
+  nextBtn(){
+  this.idx1 += 20
+  this.idx2 += 20
+  this.arryCall()
+  this.btnFunc()
   }
+//prev 20 of saved pokes
+  prevBtn(){
+    this.idx1 -= 20;
+    this.idx2 -= 20;
+    this.arryCall()
+    this.btnFunc()
+  }
+//calls and sorts main array from service
+  arryCall(){
+    this.favList = this.favArry.mainArry
+    this.favListSec = this.favList.slice(this.idx1,this.idx2)
+    console.log(this.favListSec)
+  }
+//logic to disable next btn if list ends
+  btnFunc(){
+    if(this.favList.length < this.idx2){
+      this.nextStats = false
+    }else{
+      this.nextStats = true
+  }
+}
 }

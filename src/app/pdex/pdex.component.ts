@@ -17,7 +17,7 @@ descObj = [];
 descData = {
   "abilities":[],
   "height":[],
-  "name":[],
+  "name": '',
   "types":[],
   "weight":[],
   "sprite":[],
@@ -39,7 +39,7 @@ favorites:boolean = false;
 
   ngOnInit(): void {
   this.getPokemon();
-   this.favArry.callStorage()
+  this.favArry.callStorage()
   }
 
   getPokemon() {
@@ -73,19 +73,16 @@ favorites:boolean = false;
          this.mainDescCall()
       });
       this.showStats = true;
-      this.favSort()
     }
 
 
     saveFavPoke(id) {
-      this.userArray = id;
-      this.favArry.saveInput(this.userArray)
-      this.favSort()
-
+      this.favArry.saveInput(id)
     }
 
     favSort(){
       for (let i = 0;  i < this.favArry.mainArry.length;i++) {
+        this.descData.name
         if(this.favArry.mainArry[i] == this.descData.name){
           this.isPokeFav = false
         }else{this.isPokeFav = true}

@@ -4,6 +4,7 @@ import { FavPokemonComponent } from './fav-pokemon/fav-pokemon.component';
 import { HomeComponent } from './home/home.component';
 import { PdexComponent } from './pdex/pdex.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
